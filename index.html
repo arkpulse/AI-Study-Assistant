@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>AI Study Assistant</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <div class="app">
+
+        <!-- Sidebar -->
+        <aside class="sidebar">
+
+            <div class="logo">
+                <div class="logo-icon">🤖</div>
+
+                <div>
+                    <h2>AI Study</h2>
+                    <p>Assistant</p>
+                </div>
+            </div>
+
+            <button class="new-chat" onclick="newChat()">
+                <span>＋</span>
+                New Chat
+            </button>
+
+            <div class="menu-title">
+                FEATURES
+            </div>
+
+            <button class="menu-item" onclick="selectFeature('Subject Questions')">
+                📚
+                <span>Subject Questions</span>
+            </button>
+
+            <button class="menu-item" onclick="selectFeature('Programming Help')">
+                💻
+                <span>Programming Help</span>
+            </button>
+
+            <button class="menu-item" onclick="selectFeature('Notes Explanation')">
+                📝
+                <span>Notes Explanation</span>
+            </button>
+
+            <button class="menu-item" onclick="selectFeature('Quiz Generator')">
+                ❓
+                <span>Quiz Generator</span>
+            </button>
+
+            <button class="menu-item" onclick="selectFeature('Text Summarizer')">
+                📄
+                <span>Text Summarizer</span>
+            </button>
+
+            <button class="menu-item" onclick="selectFeature('Study Mode')">
+                📖
+                <span>Study Mode</span>
+            </button>
+
+            <button class="menu-item" onclick="selectFeature('Translation')">
+                🌐
+                <span>Translation</span>
+            </button>
+
+            <button class="menu-item" onclick="selectFeature('Project Ideas')">
+                💡
+                <span>Project Ideas</span>
+            </button>
+
+            <div class="menu-title history-title">
+                CHAT HISTORY
+            </div>
+
+            <div id="chatHistory" class="chat-history">
+            </div>
+
+            <div class="sidebar-bottom">
+
+                <button class="menu-item" onclick="toggleTheme()">
+                    🌙
+                    <span>Dark / Light Mode</span>
+                </button>
+
+                <button class="menu-item" onclick="showSettings()">
+                    ⚙️
+                    <span>Settings</span>
+                </button>
+
+            </div>
+
+        </aside>
+
+
+        <!-- Main Content -->
+        <main class="main">
+
+            <!-- Header -->
+            <header class="header">
+
+                <div>
+                    <h1>AI Study Assistant</h1>
+                    <p>Your intelligent learning companion</p>
+                </div>
+
+                <div class="header-status">
+                    <span class="status-dot"></span>
+                    AI Online
+                </div>
+
+            </header>
+
+
+            <!-- Chat Area -->
+            <section class="chat-container">
+
+                <div id="chatBox" class="chat-box">
+
+                    <!-- Welcome Screen -->
+                    <div id="welcomeScreen" class="welcome">
+
+                        <div class="welcome-icon">
+                            🤖
+                        </div>
+
+                        <h2>
+                            How can I help you today?
+                        </h2>
+
+                        <p>
+                            Ask me about your studies, programming,
+                            notes, projects, or anything you want to learn.
+                        </p>
+
+                        <div class="suggestions">
+
+                            <button onclick="useSuggestion('Explain Artificial Intelligence in simple words')">
+                                📚 Explain AI
+                            </button>
+
+                            <button onclick="useSuggestion('Help me with Python programming')">
+                                💻 Python Help
+                            </button>
+
+                            <button onclick="useSuggestion('Give me project ideas for Computer Science')">
+                                💡 Project Ideas
+                            </button>
+
+                            <button onclick="useSuggestion('Explain BFS in simple words')">
+                                🧠 Explain BFS
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- Input Area -->
+                <div class="input-section">
+
+                    <div class="input-box">
+
+                        <button class="input-button" onclick="document.getElementById('fileInput').click()">
+                            📎
+                        </button>
+
+                        <input
+                            type="file"
+                            id="fileInput"
+                            hidden
+                            onchange="handleFile()"
+                        >
+
+                        <textarea
+                            id="messageInput"
+                            placeholder="Ask anything..."
+                            rows="1"
+                            onkeydown="handleEnter(event)"
+                        ></textarea>
+
+                        <button
+                            class="input-button"
+                            onclick="startVoiceInput()"
+                            title="Voice Input"
+                        >
+                            🎤
+                        </button>
+
+                        <button
+                            class="send-button"
+                            onclick="sendMessage()"
+                            title="Send"
+                        >
+                            ➤
+                        </button>
+
+                    </div>
+
+                    <p class="input-note">
+                        AI Study Assistant can make mistakes. Always verify important information.
+                    </p>
+
+                </div>
+
+            </section>
+
+        </main>
+
+    </div>
+
+
+    <!-- Settings Modal -->
+    <div id="settingsModal" class="modal">
+
+        <div class="modal-content">
+
+            <button class="close-button" onclick="closeSettings()">
+                ×
+            </button>
+
+            <h2>⚙️ Settings</h2>
+
+            <div class="setting-item">
+
+                <div>
+                    <strong>Dark Mode</strong>
+                    <p>Change the appearance of the chatbot.</p>
+                </div>
+
+                <button onclick="toggleTheme()">
+                    🌙
+                </button>
+
+            </div>
+
+            <div class="setting-item">
+
+                <div>
+                    <strong>Clear Chat</strong>
+                    <p>Delete the current conversation.</p>
+                </div>
+
+                <button onclick="newChat()">
+                    🗑️
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>
